@@ -980,7 +980,7 @@ export namespace Temporal {
     microsecond?: number;
     nanosecond?: number;
     offset?: string;
-    timeZone?: TimeZoneLike;
+    timeZone: TimeZoneLike;
     calendar?: CalendarLike;
   };
 
@@ -1023,7 +1023,10 @@ export namespace Temporal {
     readonly epochMilliseconds: number;
     readonly epochNanoseconds: bigint;
     equals(other: Temporal.ZonedDateTime | ZonedDateTimeLike | string): boolean;
-    with(zonedDateTimeLike: ZonedDateTimeLike, options?: ZonedDateTimeAssignmentOptions): Temporal.ZonedDateTime;
+    with(
+      zonedDateTimeLike: Omit<ZonedDateTimeLike, 'timeZone'>,
+      options?: ZonedDateTimeAssignmentOptions
+    ): Temporal.ZonedDateTime;
     withPlainTime(timeLike?: Temporal.PlainTime | PlainTimeLike | string): Temporal.ZonedDateTime;
     withCalendar(calendar: CalendarLike): Temporal.ZonedDateTime;
     withTimeZone(timeZone: TimeZoneLike): Temporal.ZonedDateTime;
